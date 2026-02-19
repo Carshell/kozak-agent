@@ -7,7 +7,7 @@ from typing import Any
 
 
 @dataclass
-class CheckResult:
+class CheckResult:  
     """Результат однієї перевірки для відправки в моніторинг."""
     module: str
     status: str  # "ok" | "error" | "warning"

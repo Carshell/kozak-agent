@@ -55,7 +55,7 @@ def _run_ssh_check_sync() -> tuple[bool, str, dict[str, Any]]:
                 allow_agent=False,
                 look_for_keys=False,
             )
-        else:
+        else:   
             return False, "Не задано SSH_KEY_PATH або SSH_PASSWORD", {}
         client.close()
         return True, "SSH зʼєднання успішне", {"host": host, "port": port, "user": user}

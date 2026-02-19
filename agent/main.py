@@ -7,7 +7,7 @@ from datetime import datetime
 
 from config import get_check_interval, get_enabled_modules
 from client import push_to_monitoring
-from modules import get_module
+from modules import get_module  
 
 logging.basicConfig(
     level=logging.INFO,

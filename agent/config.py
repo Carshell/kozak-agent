@@ -25,8 +25,15 @@ def get_api_key() -> str:
     return os.getenv("MONITORING_API_KEY", "").strip()
 
 
-def get_enabled_modules() -> list[str]:
+def get_enabled_modules() -> list[str]:  
     return _str_list(os.getenv("ENABLED_MODULES", "ssh"))
+
+
+def get_nginx_urls() -> list[str]:  
+    return _str_list(os.getenv("NGINX_URLS", "ssh"))
+
+def get_nginx_timeout() -> list[str]:  
+    return os.getenv("NGINX_TIMEOUT", "5")
 
 
 def get_check_interval() -> int:
