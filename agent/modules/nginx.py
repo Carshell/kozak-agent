@@ -13,22 +13,31 @@ from config import (
 
 def check_nginx() -> tuple[str, str, dict[str, Any]]:  
     urls = get_nginx_urls()
-    timeout = get_nginx_timeout()
+    timeout = int(get_nginx_timeout())
+    details = {}
     for url in urls:
 
         try:
             r = httpx.get(url, timeout=timeout)
 
             if not r.status_code == 200:
-                return "error", f"Помилка зєднання {r.status_code}", {"url":url}
+                #return "error", f"Помилка зєднання {r.status_code}", {"url":url}
+                details.update({url : r.status_code})
+                
             
             elif r.status_code == 200:
-                return "ok", f"Зєднання успішне {r.status_code}", {"url":url}
+                #return "ok", f"Зєднання успішне {r.status_code}", {"url":url}
+                continue
 
         except httpx.RequestError as exc:
-            
-            return "error", "Помилка зєднання ", {"url":url,"method": exc.request.method, "error": str(exc), "error2": exc.__cause__}
+            details.update({url : str(exc)})
+            #return "error", "Помилка зєднання ", {"url":url,"method": exc.request.method, "error": str(exc), "error2": exc.__cause__}
+        
+    if details:   
 
+        return "error", "Помилки", details
+    else:
+        return "ok", "Все працює", details
 
 
 

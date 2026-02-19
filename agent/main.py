@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
+  
 async def run_checks_and_push() -> None:
     """Запускає всі увімкнені модулі та відправляє результати в моніторинг."""
     enabled = get_enabled_modules()
