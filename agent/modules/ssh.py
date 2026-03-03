@@ -14,7 +14,7 @@ from config import (
     get_ssh_password,
     get_ssh_port,
     get_ssh_user,
-)
+)  
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +35,7 @@ def _run_ssh_check_sync() -> tuple[bool, str, dict[str, Any]]:
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     try:
-        if key_path:
+        if key_path:  
             client.connect(
                 hostname=host,
                 port=port,

@@ -66,7 +66,7 @@ def get_ssh_password() -> str | None:
 # --- Postgres (заглушки для roadmap) ---
 def get_postgres_host() -> str:
     return os.getenv("POSTGRES_HOST", "localhost")
-
+  
 
 def get_postgres_port() -> int:
     return int(os.getenv("POSTGRES_PORT", "5432"))
@@ -82,6 +82,7 @@ def get_postgres_password() -> str:
 
 def get_postgres_db() -> str:
     return os.getenv("POSTGRES_DB", "postgres")
+
 
 
 # --- MySQL ---
