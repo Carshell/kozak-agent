@@ -6,12 +6,14 @@ from modules.ssh import SshModule
 from modules.postgres import PostgresModule
 from modules.mysql import MysqlModule
 from modules.nginx import NginxModule
+from modules.subprocess import SubprocessModule
 
 REGISTRY: dict[str, type[BaseModule]] = {
     "ssh": SshModule,
     "postgres": PostgresModule,
     "mysql": MysqlModule,
     "nginx": NginxModule,
+    "subprocess":SubprocessModule,
 }
 
 

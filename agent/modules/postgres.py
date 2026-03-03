@@ -21,19 +21,19 @@ async def check_postgress_db():
     user2 = get_postgres_user()
     password2 = get_postgres_password()
     db2 = get_postgres_db()
-
+    
     details = {"user":user2, "port":port2, "host": host2, "password": password2, "db":db2}
 
     try:
         conn = await asyncpg.connect(user=user2, password=password2,
                                  database=db2, host=host2, port = port2)
         
-        row = await conn.fetchrow('SELECT * FROM users WHERE name = $1', 'Bob')
+        row = await conn.fetchrow('select 1 as is_alive')
 
-        if row:
+        if row["is_alive"] == 1 :
             return True, "DB works", details
         else:
-            return False, "Db didn't return anything", details
+            return False, "Error, db is not alive", details
         
     except Exception as e:
         return False, f"{e}", details

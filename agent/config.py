@@ -109,3 +109,7 @@ def get_mysql_database() -> str:
 # --- Nginx ---
 def get_nginx_status_url() -> str:
     return os.getenv("NGINX_STATUS_URL", "http://localhost/nginx_status")
+
+
+def get_subprocess_services() -> list[str]:  
+    return _str_list(os.getenv("SUBPROCESS_SERVICES", "ssh"))
