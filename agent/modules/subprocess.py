@@ -18,10 +18,11 @@ async def check_subprocess():
     resolt = True
     for ser in servisec:
         result = subprocess.run(
-                ["systemctl", "is-active", "--quiet", ser]
+                ["sudo","systemctl", "is-active", "--quiet", ser]
             )
         if result.returncode == 0:
             details[ser] = "active"
+            
         elif result.returncode == 3:
             details[ser] = "inactive"
             resolt = False
